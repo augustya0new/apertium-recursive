@@ -206,6 +206,9 @@ def tostr(blob):
         if not ENDOFCHOOSE:
             n += 2
         ret = kids[0] + sint(n) + ret
+    elif blob.tag== 'append':
+        for i,n in enumerate(kids):
+            rep['.%s'%sint(i+1)] = '.%s'%sint(''.join([c for c in blob.attrib['pos'] if c.isdigit()]))
     elif blob.tag == 'otherwise':
         ret = ''.join(kids)
     elif blob.tag in stack:
